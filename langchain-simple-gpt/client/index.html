@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Simple GPT</title>
+  </head>
+  <body class="bg-neutral-900 text-white overflow-x-hidden relative">
+    <main id="chat-cont" class="container mx-auto max-w-3xl pb-44 px-2">
+      <div class="fixed w-full inset-x-0 bottom-0 bg-neutral-900">
+        <div class="max-w-3xl mx-auto mb-6 bg-neutral-800 p-4 rounded-3xl">
+          <textarea
+            id="input"
+            class="w-full resize-none outline-0 p-2"
+            rows="2"
+          ></textarea>
+          <div class="flex justify-end">
+            <button
+              id="ask-btn"
+              class="bg-white px-4 py-1 text-black rounded-full cursor-pointer hover:bg-gray-300"
+            >
+              Ask
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

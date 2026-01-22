@@ -1,0 +1,22 @@
+{
+  "name": "langgraph-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"node --env-file=.env index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@langchain/core": "^1.1.15",
+    "@langchain/groq": "^1.0.3",
+    "@langchain/langgraph": "^1.1.0",
+    "@langchain/tavily": "^1.2.0",
+    "langchain": "^1.2.10",
+    "zod": "^4.3.5"
+  }
+}
