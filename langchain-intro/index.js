@@ -1,8 +1,15 @@
 import Groq from "groq-sdk";
 
+/**
+ * Groq client instance
+ * @constant
+ */
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 async function main() {
+  /**
+   *  System level instruction that tells model how to behave and format output
+   */
   const systemInstruction = `
   You are an AI assistant that extracts structured data from user messages.
 
@@ -15,9 +22,15 @@ async function main() {
 
   `;
 
+  /**
+   * User provided input to be analyzed and classified
+   */
   const userInput = `Your app keeps crashing every time I try to upload a file. I can’t use it at all.
  `;
 
+  /**
+   * JSON schema defining exact structure of the model response
+   */
   const outputSchema = {
     type: "json_schema",
     json_schema: {
@@ -54,6 +67,7 @@ async function main() {
             maximum: 1,
           },
         },
+        // Required fields in response
         required: [
           "intent",
           "urgency",
@@ -61,11 +75,14 @@ async function main() {
           "requires_human_agent",
           "confidence_score",
         ],
-        additionalProperties: false,
+        additionalProperties: false, // No extra fields allowed
       },
     },
   };
-  
+
+  /**
+   * Submit a chat completion request with parameters
+   */
   const chatCompletion = await groq.chat.completions.create({
     model: "meta-llama/llama-4-maverick-17b-128e-instruct",
     temperature: 0.2,
@@ -82,7 +99,11 @@ async function main() {
     ],
   });
 
+  /**
+   * Parse and output the validated response
+   */
   console.log(JSON.parse(chatCompletion?.choices[0].message.content));
 }
 
+// Entry point
 main();
